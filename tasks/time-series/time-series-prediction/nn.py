@@ -1,7 +1,8 @@
 import numpy as np
 from keras.callbacks import ModelCheckpoint
 from sklearn.metrics import confusion_matrix
-
+import mlflow
+import mlflow.keras 
 class NeuralNetwork:
     def __init__(self, nn, class_weight, validation_split=0.25, batch_size=256, nb_epoch=2, show_accuracy=True):
         self.show_accuracy = show_accuracy
@@ -39,6 +40,12 @@ class NeuralNetwork:
         cmat = confusion_matrix(y_actual, y_predicted)
         class_num = cmat.diagonal()
         class_accuracy = class_num / cmat.sum(axis=1)
+
+        mlflow.log_metric('accuracy',class_accuracy)
+        mlflow.log_metric('error',error)
+
+        mlflow.keras.log_model(self.model,'model')
+        '''
         print("EACH : class 0: {0}, class 1: {1}, class 2: {2}".format(
             class_accuracy[0],
             class_accuracy[1],
@@ -53,6 +60,8 @@ class NeuralNetwork:
               np.sum(np.ravel(y_actual) == 1),
               np.sum(np.ravel(y_actual) == 2)))
         print("ERROR RATE: ", error)
+        '''
+
 
         return error
 

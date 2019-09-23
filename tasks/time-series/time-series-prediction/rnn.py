@@ -10,7 +10,8 @@ from functools import partial, update_wrapper
 import time
 from keras import backend as K
 from keras.regularizers import L1L2
-
+import mlflow
+import mlflow.keras 
 
 class RNN:
     def __init__(self, input_shape, output_dim):
@@ -59,6 +60,6 @@ def main():
     # nn.run_with_cross_validation(data, n_cross_validation)
 
 
+main()
 
-if __name__ == '__main__':
-    main()
+

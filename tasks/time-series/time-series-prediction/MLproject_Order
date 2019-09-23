@@ -1,0 +1,6 @@
+name: MLproject_Order
+conda_env: meta.yaml
+
+entry_points:
+  main:
+    command: "rnn.py"
