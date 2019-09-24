@@ -3,4 +3,4 @@ conda_env: meta.yaml
 
 entry_points:
   main:
-    command: "rnn.py"
+    command: "python rnn.py"

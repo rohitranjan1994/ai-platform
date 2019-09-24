@@ -41,9 +41,9 @@ class NeuralNetwork:
         class_num = cmat.diagonal()
         class_accuracy = class_num / cmat.sum(axis=1)
 
-        mlflow.log_metric('accuracy',class_accuracy)
+        #mlflow.log_metric('accuracy',class_accuracy)
+        print("ERROR RATE: ", error)
         mlflow.log_metric('error',error)
-
         mlflow.keras.log_model(self.model,'model')
         '''
         print("EACH : class 0: {0}, class 1: {1}, class 2: {2}".format(
@@ -55,6 +55,7 @@ class NeuralNetwork:
             class_num[0],
             class_num[1],
             class_num[2]))
+
         print("ACTUAL: class 0: {0}, class 1: {1}, class 2: {2}".format(
               np.sum(np.ravel(y_actual) == 0),
               np.sum(np.ravel(y_actual) == 1),

@@ -1,4 +1,11 @@
-artifact_location: C:\Users\rohit\OneDrive\Documents\ai-platform\tasks\time-series\time-series-prediction
-experiment_id: '0'
-lifecycle_stage: active
-name: Default
+name: file://time-seriece-prediction
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - scikit-learn
+  - keras
+  - tensorflow
+  - pip:
+    - mlflow
